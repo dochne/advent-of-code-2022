@@ -1,7 +1,7 @@
-filename = ARGV[0]
-input = File.read(filename).gsub(/\r/, "")
+#!/usr/bin/env ruby
 
-calories_by_elf = input.split("\n\n")
-    .map{|items| items.split("\n").map(&:to_i).sum }
+value = STDIN.read.lines("\n\n", chomp: true)
+    .map{|items| items.lines(chomp: true).map(&:to_i).sum }
+    .max
 
-p(calories_by_elf.max)
+p(value)
