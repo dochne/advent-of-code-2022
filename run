@@ -1,0 +1,9 @@
+#!/usr/bin/env ruby
+
+filename = ARGV[0]
+raise "You need to pass in a filename to run!" if filename.nil?
+
+folder = ARGV[0].split("/").first
+
+system("cat #{folder}/data.txt | #{filename}")
+
