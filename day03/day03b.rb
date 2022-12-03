@@ -12,8 +12,8 @@ value = STDIN.read.lines(chomp: true)
     .map{|line| line.split("")}
     .in_groups_of(3)
     .map{|elf1, elf2, elf3| elf1 & elf2 & elf3 }
-    .map{|intersect| intersect.map{|item| item.ord > 96 ? item.ord % 96 : (item.ord % 64) + 26}}
     .flatten
+    .map{|item| item.ord > 96 ? item.ord % 96 : (item.ord % 64) + 26}
     .sum
 
 p(value)
