@@ -48,27 +48,10 @@ def move(head, tail)
     ]
 end
 
-# array.each do |(tail, expected)|
-#     value = move([0, 0], tail)
-#     p("#{tail} #{value} #{expected}")
-#     if (value != expected)
-#         p("Oh no")
-#         p(tail)
-#         p(expected)
-#         exit
-#     end
-# end
-
-
-# exit
-
-
-n = 0
-head = [n, n]
-tail = [n, n]
-tail_set = Set.new()
-
-# if head was 1, 1 and tail was -1, -1
+start = [0, 0]
+head = start.clone
+tail = start.clone
+tail_set = Set.new([start])
 
 input = STDIN.read.lines(chomp: true)
     .each do |instruction| 
@@ -76,30 +59,12 @@ input = STDIN.read.lines(chomp: true)
             digit = ["U", "D"].include?(direction) ? 1 : 0
             invert = ["D", "L"].include?(direction) ? -1 : 1
 
-            p("#{direction} #{distance}")
             distance.to_i.times.each do
-                # raise "negative numbers" if head[0] < 0 || head[1] < 0 || tail[0] < 0 || tail[0] < 0
-
-                # draw(head, tail)
-
                 head[digit] += invert
 
                 h_offset = head[0] - tail[0]
                 v_offset = head[1] - tail[1]
 
-                if h_offset == 2 && v_offset == 2
-                    p("wtf")
-                    exit
-                end
-
-
-                # horizontal = [head[0], tail[0]]
-                # vertical = [head[1], tail[1]]
-                # h_diff = horizontal.max - horizontal.min
-                # v_diff = vertical.max - vertical.min
-
-
-                
                 next if h_offset.abs <= 1 && v_offset.abs <= 1
 
                 tail = [
@@ -107,39 +72,9 @@ input = STDIN.read.lines(chomp: true)
                     tail[1] + (v_offset != 0 ? (v_offset > 0 ? 1 : -1) : 0),
                 ]
 
-                tail_set.add(tail)
-                # if h_offset.abs != 0 && v_offset == 0
-                #     tail = [tail[0] + (h_offset > 0 ? 1 : -1), tail[1]]
-                # end
-
-                # if v_offset.abs != 0 && h_offset == 0
-                #     tail = [tail[0], tail[1] + (v_offset > 0 ? 1 : -1)]
-                # end
-
-
-                # draw(head, tail)
-                # p("#{h_offset}, #{v_offset}")
-
-                # exit
-
-                # vertical = []
-
-                # if head[0] == tail[0] && 
-                
-                # if head[0]
-
-                
+                tail_set.add(tail.clone)
             end
         end
     end
 
-
-
-
-
-
-draw([-1, -1], [-1, -1], tail_set)
 p(tail_set.size)
-# p(value)
-
-# not 6257 - too high
