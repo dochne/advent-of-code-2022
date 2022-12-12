@@ -47,8 +47,6 @@ monkeys = STDIN.read.split("\n\n")
 divisor = monkeys.map(&:test).reduce(1){_1 * _2}
 
 10000.times do |index|
-    p(index) if (index % 100) == 0
-    
     monkeys.each do |monkey|
         until monkey.items.empty? 
             item = monkey.items.shift
