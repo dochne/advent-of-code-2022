@@ -15,6 +15,7 @@ valves = STDIN.read.lines(chomp: true)
         acc
     end
 
+    
 class State
     def initialize(valves, time, pos)
         @valves = valves
